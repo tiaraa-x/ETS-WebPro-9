@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Ketahanan Pangan (GOKU)</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="goku.css">
+</head>
+
+<script>
+let navbar = document.querySelector('.navbar');
+let toggler = document.getElementById('toggler');
+
+document.querySelectorAll('.navbar a').forEach(link => {
+    link.onclick = () => {
+        toggler.checked = false;
+    }
+});
+
+window.onscroll = () => {
+    if(window.scrollY > 50){
+        document.querySelector('header').classList.add('active');
+    } else {
+        document.querySelector('header').classList.remove('active');
+    }
+
+    revealOnScroll();
+};
+
+function revealOnScroll(){
+    let reveals = document.querySelectorAll('section, .box, .icons');
+
+    reveals.forEach(el => {
+        let windowHeight = window.innerHeight;
+        let elementTop = el.getBoundingClientRect().top;
+        let visible = 100;
+
+        if(elementTop < windowHeight - visible){
+            el.classList.add('show');
+        }
+    });
+}
+
+document.querySelectorAll('.cart-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        btn.innerText = "added!";
+        btn.style.background = "#333";
+
+        setTimeout(() => {
+            btn.innerText = "add to cart";
+            btn.style.background = "";
+        }, 1500);
+    });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e){
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute("href"))
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
+
+document.querySelector("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Pesan berhasil dikirim!");
+});
+</script>
+
+
+<body>
+<!--header-->
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a href="#" class="logo">GOKU<span>.</span></a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#about">about</a>
+        <a href="#review">review</a>
+        <a href="#products">products</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+    <div class="icons">
+        <a href="#" class="fas fa-heart"></a>
+        <a href="#" class="fas fa-shopping-cart"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+<!--header end-->
+
+
+
+<!--home-->
+<section class="home" id="home">
+    <div class="content">
+        <h3>GOKU</h3>
+        <span> Fuel Your Day in Healthy Way </span>
+        <p>Snackbar Berbahan Dasar Sorgum untuk Mendukung Ketahanan 
+        Pangan melalui Diversifikasi Pangan Lokal</p>
+        <a href="#about" class="btn">learn more</a>
+    </div>
+</section>
+<!--home end-->
+
+
+
+<!--about 1-->
+<section class="about" id="about">
+    <h1 class="heading"> <span> about </span> us </h1>
+
+    <div class="row">
+
+        <div class="content">
+            <h3>why choose GOKU?</h3>
+            <p>
+            Dirancang untuk gaya hidup modern, GOKU menghadirkan camilan sehat berbahan dasar 
+            sorgum yang kaya nutrisi dan diproses dengan cermat untuk menjaga kualitas rasa dan tekstur. 
+            Perpaduan bahan alami pilihan memberikan energi yang stabil tanpa rasa bersalah. GOKU 
+            pilihan tepat untuk menemani aktivitas harianmu dengan lebih seimbang.
+            </p>
+            <p>
+            GOKU hadir sebagai langkah kecil menuju konsumsi pangan yang lebih beragam, 
+            sehat, dan berkelanjutan melalui pemanfaatan bahan lokal bernilai tinggi.
+            </p>
+        </div>
+
+        <div class="image-container">
+            <img src="pic/proteinbar.jpg.jpeg" alt="GOKU protein bar">
+        </div>
+
+    </div>
+</section>
+<!--about 1 end-->
+
+<!--about 2-->
+<section class="about about-2">
+    <h1 class="heading"><span>did you</span> know?</h1>
+
+    <div class="row fade-in">
+
+        <div class="content">
+            <h3>Indonesia Masih Bergantung pada Beras</h3>
+            <p>
+            Pola konsumsi masyarakat Indonesia masih didominasi oleh satu sumber pangan utama, 
+            yaitu beras. Hal ini berisiko terhadap ketahanan pangan di masa depan.
+            </p>
+
+            <div class="stats">
+                <div class="box">
+                    <h2>91%</h2>
+                    <span>Konsumsi Beras</span>
+                </div>
+                <div class="box">
+                    <h2>9%</h2>
+                    <span>Pangan Alternatif</span>
+                </div>
+            </div>
+
+            <p class="highlight">
+            Saatnya beralih ke pangan lokal seperti sorgum yang lebih sehat dan berkelanjutan.
+            </p>
+        </div>
+
+        <div class="image-container">
+            <img src="pic/pie.jpeg">
+        </div>
+
+    </div>
+</section>
+<!--about 2 end-->
+
+<!--about 3-->
+<section class="about about-3">
+    <h1 class="heading"><span>why</span> sorgum?</h1>
+
+    <div class="row fade-in">
+
+        <div class="image-container">
+            <img src="pic/bar.jpeg" alt="">
+            
+            <!-- overlay -->
+            <div class="overlay">
+                <h3>Sorgum = Superfood Lokal</h3>
+                <p>Lebih sehat, lebih tahan, dan lebih berkelanjutan</p>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="feature">
+                <h4>🌾 Tinggi Serat</h4>
+                <p>Membantu pencernaan & kenyang lebih lama.</p>
+            </div>
+
+            <div class="feature">
+                <h4>💪 Kaya Zat Besi</h4>
+                <p>Mendukung energi dan mencegah lemas.</p>
+            </div>
+
+            <div class="feature">
+                <h4>⚡ Energi Stabil</h4>
+                <p>Tidak menyebabkan lonjakan gula darah.</p>
+            </div>
+
+            <div class="feature">
+                <h4>🥗 Nutrisi Seimbang</h4>
+                <p>Cocok untuk gaya hidup sehat modern.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!--about 3 end-->
+
+
+<!--review-->
+<section class="review-section" id="review">
+    <h1 class="heading">Review of <span>Sorghum</span></h1>
+
+    <div class="review-container">
+
+        <div class="review-card">
+           <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Sorgum membutuhkan air lebih sedikit ➡️ Cocok untuk daerah kering.</p>
+            <h3>Hemat Air 💧</h3>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Mampu tumbuh di kondisi minim air ➡️ Tetap produktif saat kemarau.</p>
+            <h3>Tahan Kekeringan 🌤️</h3>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Dapat tumbuh di lahan kurang subur ➡️ Maksimalkan lahan marginal.</p>
+            <h3>Lahan Marginal 🌱</h3>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p>Masa panen cepat ➡️ Rotasi tanam lebih fleksibel.</p>
+            <h3>Panen Cepat ⏱️</h3>
+        </div>
+    </div>
+</section>
+
+<!--products-->
+<section class="products" id="products">
+    <h1 class="heading"> latest <span>products</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="pic/ori.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Original</h3>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="pic/chocolate.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>sweet chocolate</h3>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="pic/strawberry.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>strawberry</h3>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="pic/vanilla.jpeg" alt="">
+                <div class="icons">
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="cart-btn">add to cart</a>
+                    <a href="#" class="fas fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>vanilla</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!--products end-->
+
+
+
+<!--icons-->
+<section class="icons-section">
+    <div class="icons-container">
+
+        <div class="icon-card">
+            <img src="pic/enegy.jpg.jpeg">
+            <div class="info">
+                <h3>Energi</h3>
+                <p>329 kkal</p>
+            </div>
+        </div>
+
+        <div class="icon-card">
+            <img src="pic/karbo.jpg.jpeg">
+            <div class="info">
+                <h3>Karbohidrat</h3>
+                <p>73 gr</p>
+            </div>
+        </div>
+
+        <div class="icon-card">
+            <img src="pic/protein.jpg.jpeg">
+            <div class="info">
+                <h3>Protein</h3>
+                <p>11 gr</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--icons end-->
+
+
+
+
+<!--footer-->
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#review">review</a>
+            <a href="#products">products</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#">my account</a>
+            <a href="#">my order</a>
+            <a href="#">my favorite</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#">+123-456-7890</a>
+            <a href="#">example@gmail.com</a>
+            <a href="#">Surabaya, Indonesia - 400104</a>
+            <img src="images/payment.png" alt="">
+        </div>
+
+        <div class="box">
+            <h3>member</h3>
+            <a href="#">Ivana Dwi Sherlinadia 2043251023</a>
+            <a href="#">Tiara Putri Ayu S 2043251030</a>
+            <a href="#">Aghnayla Aura Nadinya P 2043252083</a>
+            <a href="#">Nyimas Valenci Kesia Azzahra 2043251093</a>
+        </div>
+    </div>
+
+    <div class="credit"> created by <span> kelompok 9 </span> | all rights reserved </div>
+</section>
+<!--footer end-->
+</body>
+</html>
